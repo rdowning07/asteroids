@@ -47,8 +47,6 @@ def log_state():
             screen_size = value.get_size()
 
         if hasattr(value, "__class__") and "Group" in value.__class__.__name__:
-            sprites_data = []
-
             for i, sprite in enumerate(value):
                 if i >= _SPRITE_SAMPLE_LIMIT:
                     break
@@ -73,9 +71,7 @@ def log_state():
                 if hasattr(sprite, "rotation"):
                     sprite_info["rot"] = round(sprite.rotation, 2)
 
-                sprites_data.append(sprite_info)
-
-            game_state[key] = {"count": len(value), "sprites": sprites_data}
+                game_state[f"{key}_{i}"] = sprite_info
 
         if len(game_state) == 0 and hasattr(value, "position"):
             sprite_info = {"type": value.__class__.__name__}
