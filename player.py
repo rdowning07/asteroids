@@ -22,6 +22,11 @@ class Player(circleshape.CircleShape):
             self.triangle(),
             constants.LINE_WIDTH
         )
+    def move(self, dt):
+        unit_vector = pygame.Vector2(0, 1)
+        rotated_vector = unit_vector.rotate(self.rotation)
+        rotated_with_speed_vector = rotated_vector * constants.PLAYER_SPEED * dt
+        self.position += rotated_with_speed_vector
 
     def rotate(self, dt):
         self.rotation += constants.PLAYER_TURN_SPEED * dt
@@ -37,3 +42,9 @@ class Player(circleshape.CircleShape):
         if keys[pygame.K_d]:
             print("D pressed")
             self.rotate(dt)
+        if keys[pygame.K_w]:
+            print("A pressed")
+            self.move(dt)
+        if keys[pygame.K_s]:
+            print("S pressed")
+            self.move(-dt)

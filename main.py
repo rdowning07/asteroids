@@ -7,6 +7,11 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+    
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)
 
     # Player is a LOCAL — this is the key
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
@@ -18,11 +23,13 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        player.update(dt)   # mutate state first
+        updatable.update(dt)   # mutate state first
         log_state()          # observe state second
 
         screen.fill("black")
-        player.draw(screen)
+        for sprite in drawable:
+            sprite.draw(screen)
+            
         pygame.display.flip()
 
 if __name__ == "__main__":
