@@ -1,9 +1,8 @@
 # Asteroids (Boot.dev Project)
 
 A Python implementation of a classic **Asteroids-style game**, built using **Pygame** as part of the Boot.dev curriculum.  
-This project focuses on **game loops, time-based simulation, state logging, and object-oriented design**, rather than advanced graphics or physics.
 
-The goal of this project was not to build a fully featured game, but to understand the **systems-level foundations** that real-time games (and simulations) rely on.
+This project focuses on **game loops, time-based simulation, state logging, and object-oriented design**, rather than advanced graphics or physics. The goal was to to understand the **systems-level foundations** that real-time games (and simulations) rely on.
 
 ---
 
